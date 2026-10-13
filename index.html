@@ -1,621 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ta">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#07552b">
-<title>UYIR MULAI | உயிர் முளை</title>
-
-<style>
-:root {
-  --green: #07552b;
-  --green2: #16823c;
-  --lime: #a6d936;
-  --cream: #fbf9ef;
-  --gold: #e9d99b;
-  --white: #fff;
-  --text: #163b26;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: Arial, "Noto Sans", sans-serif;
-  background: var(--cream);
-  color: var(--text);
-}
-a { text-decoration: none; color: inherit; }
-button, input, select { font: inherit; }
-button { cursor: pointer; }
-.topbar {
-  background: var(--green);
-  color: white;
-  text-align: center;
-  padding: 8px;
-  font-size: 13px;
-  letter-spacing: .3px;
-}
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 15px 5%;
-  background: white;
-  flex-wrap: wrap;
-}
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.brand-icon { font-size: 48px; }
-.brand h1 {
-  color: var(--green);
-  font-size: clamp(22px, 3vw, 36px);
-  margin: 0;
-  letter-spacing: 1px;
-}
-.brand p {
-  margin: 4px 0 0;
-  color: var(--green2);
-  font-weight: bold;
-  font-size: 13px;
-}
-.header-tools {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.language {
-  padding: 11px;
-  border: 1px solid #9ab99e;
-  border-radius: 10px;
-  color: var(--green);
-  background: white;
-  max-width: 100%;
-}
-.cart-button {
-  background: var(--green);
-  color: white;
-  border: 0;
-  border-radius: 10px;
-  padding: 12px 16px;
-}
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 10px;
-  background: var(--green);
-  color: white;
-  flex-wrap: wrap;
-}
-.nav a {
-  padding: 12px 18px;
-  border-radius: 25px;
-  font-weight: bold;
-}
-.nav a:hover { background: var(--green2); }
-.hero {
-  min-height: 390px;
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  align-items: center;
-  gap: 25px;
-  padding: 45px 7%;
-  background:
-    radial-gradient(circle at 85% 20%, #d9edaa 0, transparent 30%),
-    linear-gradient(110deg, #fffef5, #e3f1ca);
-  overflow: hidden;
-}
-.hero-copy { max-width: 560px; }
-.script {
-  font-style: italic;
-  color: var(--green2);
-  font-size: 23px;
-}
-.hero h2 {
-  font-size: clamp(34px, 4.4vw, 60px);
-  line-height: 1.05;
-  margin: 12px 0;
-  color: var(--green);
-}
-.hero h2 span { color: var(--green2); }
-.hero p {
-  font-size: 17px;
-  line-height: 1.7;
-  max-width: 490px;
-}
-.button {
-  display: inline-block;
-  border: 0;
-  border-radius: 30px;
-  background: var(--green);
-  color: white;
-  padding: 15px 25px;
-  margin-top: 12px;
-  font-weight: bold;
-}
-.button:hover { background: var(--green2); }
-.hero-image {
-  min-height: 290px;
-  border-radius: 28px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  color: white;
-  font-size: clamp(55px, 8vw, 100px);
-  background:
-    linear-gradient(0deg, rgba(3,52,21,.35), transparent),
-    url("https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=85")
-    center/cover;
-  box-shadow: 0 12px 30px #16451e30;
-}
-.hero-image span {
-  font-size: 19px;
-  background: #07552bcc;
-  padding: 12px 20px;
-  border-radius: 30px;
-}
-.benefits {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-  padding: 25px 5%;
-  background: #eff6df;
-}
-.benefit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  text-align: left;
-}
-.benefit-icon {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--green);
-  color: white;
-  display: grid;
-  place-items: center;
-  font-size: 24px;
-}
-.benefit strong { display: block; font-size: 14px; }
-.benefit small { display: block; margin-top: 5px; color: #526557; }
-.section { padding: 38px 5%; }
-.section-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin-bottom: 22px;
-}
-.section-heading h2 {
-  margin: 0;
-  font-size: clamp(25px, 3vw, 36px);
-  color: var(--green);
-}
-.section-heading p { margin: 7px 0 0; }
-.small-button {
-  border: 1px solid #d6e4bd;
-  border-radius: 25px;
-  background: #edf5dc;
-  padding: 12px 18px;
-  color: var(--green);
-  font-weight: bold;
-}
-.products {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-}
-.card {
-  background: white;
-  border: 1px solid #e8e4d7;
-  border-radius: 17px;
-  padding: 12px;
-  box-shadow: 0 4px 12px #173c1b0d;
-  min-width: 0;
-}
-.product-image {
-  width: 100%;
-  aspect-ratio: 1.2;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  font-size: 65px;
-  background: linear-gradient(135deg, #e5f2cf, #fff5d8);
-  overflow: hidden;
-}
-.product-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.tag {
-  display: inline-block;
-  background: #e4f3d5;
-  color: var(--green);
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  margin-top: 10px;
-}
-.card h3 { margin: 10px 0 6px; font-size: 17px; }
-.card p { margin: 5px 0; color: #647166; font-size: 14px; }
-.price { color: var(--green2); font-size: 20px; font-weight: bold; margin: 12px 0; }
-.add-button {
-  width: 100%;
-  background: var(--green);
-  color: white;
-  border: 0;
-  border-radius: 9px;
-  padding: 12px 8px;
-  font-weight: bold;
-}
-.add-button:hover { background: var(--green2); }
-.cart-panel {
-  display: none;
-  background: white;
-  border: 1px solid #d9e5d1;
-  padding: 22px;
-  margin-top: 20px;
-  border-radius: 15px;
-}
-.cart-panel h3 { margin-top: 0; }
-.cart-line {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
-}
-.cart-line button {
-  border: 0;
-  background: #f8e5dc;
-  padding: 4px 9px;
-  border-radius: 6px;
-}
-.promo {
-  margin: 0 5% 40px;
-  border-radius: 22px;
-  padding: 35px;
-  text-align: center;
-  color: white;
-  background: linear-gradient(120deg, #07552b, #21823b);
-}
-.promo h2 { font-size: clamp(25px, 3vw, 38px); margin-top: 0; }
-.promo p { line-height: 1.7; }
-.footer {
-  padding: 30px 5%;
-  background: #073d23;
-  color: white;
-  text-align: center;
-}
-.footer p { line-height: 1.8; }
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  flex-wrap: wrap;
-  margin: 20px 0;
-}
-.notice {
-  font-size: 12px;
-  color: #d8e8d5;
-}
-@media (max-width: 950px) {
-  .hero { grid-template-columns: 1fr 1fr; padding: 35px 4%; }
-  .benefits { grid-template-columns: repeat(3, 1fr); }
-  .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 600px) {
-  .topbar { font-size: 11px; }
-  .header { padding: 13px 4%; gap: 12px; }
-  .brand { gap: 8px; }
-  .brand-icon { font-size: 35px; }
-  .brand h1 { font-size: 22px; }
-  .brand p { font-size: 11px; }
-  .header-tools { width: 100%; }
-  .language { flex: 1; min-width: 0; }
-  .cart-button { padding: 11px; }
-  .nav { justify-content: space-around; gap: 0; }
-  .nav a { padding: 10px 8px; font-size: 13px; }
-  .hero { grid-template-columns: 1fr; padding: 30px 5%; gap: 20px; }
-  .hero h2 { font-size: 38px; }
-  .hero p { font-size: 15px; }
-  .hero-image { min-height: 220px; }
-  .benefits { grid-template-columns: repeat(2, 1fr); padding: 18px 4%; }
-  .benefit { justify-content: flex-start; }
-  .benefit-icon { width: 38px; height: 38px; font-size: 19px; }
-  .benefit strong { font-size: 12px; }
-  .benefit small { font-size: 11px; }
-  .section { padding: 28px 4%; }
-  .products { gap: 10px; }
-  .card { padding: 8px; border-radius: 12px; }
-  .product-image { font-size: 45px; }
-  .card h3 { font-size: 14px; }
-  .card p { font-size: 12px; }
-  .price { font-size: 17px; }
-  .add-button { font-size: 12px; padding: 10px 4px; }
-  .promo { margin: 0 4% 28px; padding: 25px 16px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#174d35">
+  <title>UYIR MULAI | உயிர் முளை</title>
+  <style>
+    :root{--green:#174d35;--green2:#276749;--cream:#f7f5eb;--gold:#d5a84f;--ink:#203329;--muted:#65736a;--white:#fff;--line:#e3e8df;--shadow:0 12px 32px rgba(24,60,42,.09)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Tamil","Noto Sans Kannada","Noto Sans Telugu","Noto Sans Malayalam",sans-serif;color:var(--ink);background:#fff}
+    button,input,textarea,select{font:inherit}button{cursor:pointer}.topbar{background:var(--green);color:#fff;text-align:center;padding:8px 12px;font-size:.88rem}
+    header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav{max-width:1180px;margin:auto;padding:14px 22px;display:flex;align-items:center;gap:18px;justify-content:space-between}
+    .brand{display:flex;gap:11px;align-items:center;text-decoration:none;color:var(--green);min-width:190px}.logo{height:48px;width:48px;border-radius:50%;background:#e5f0df;display:grid;place-items:center;font-size:27px}.brand strong{display:block;font-size:1.08rem;letter-spacing:.06em}.brand small{display:block;font-size:.82rem;color:var(--muted)}
+    .navlinks{display:flex;gap:22px;align-items:center}.navlinks a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.95rem}.navright{display:flex;gap:10px;align-items:center}
+    select{border:1px solid var(--line);border-radius:10px;padding:9px;background:#fff;color:var(--ink);max-width:150px}.cart-button,.primary,.secondary{border:0;border-radius:12px;padding:11px 16px;font-weight:700}.cart-button,.primary{background:var(--green);color:#fff}.secondary{background:#eaf2e6;color:var(--green)}
+    .hero{background:linear-gradient(115deg,#f4f6e9 0%,#e7f0df 60%,#f8f3e6 100%);overflow:hidden}.hero-inner{max-width:1180px;margin:auto;padding:70px 22px 68px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+    .eyebrow{color:var(--green2);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem}.hero h1{font-size:clamp(2.35rem,5vw,4.5rem);line-height:1.08;margin:14px 0 18px;color:var(--green);letter-spacing:-.04em}.hero p{max-width:580px;font-size:1.08rem;line-height:1.8;color:#506257}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.hero-art{min-height:310px;border-radius:35% 35% 24px 24px;background:radial-gradient(circle at 50% 38%,#fff8d9 0 14%,transparent 15%),linear-gradient(145deg,#b6d2a4,#e4edcc 48%,#c5d7ad);display:grid;place-items:center;position:relative;box-shadow:var(--shadow)}.hero-art .big-leaf{font-size:clamp(7rem,15vw,12rem);filter:drop-shadow(0 14px 8px #315c2930)}.floating{position:absolute;background:#fff;border-radius:15px;padding:12px 15px;box-shadow:var(--shadow);font-size:.9rem;font-weight:700}.floating.one{left:-12px;top:35px}.floating.two{right:-12px;bottom:38px}
+    .trust{max-width:1180px;margin:-22px auto 0;position:relative;padding:0 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.trust-card{background:#fff;box-shadow:var(--shadow);border:1px solid #edf0e8;border-radius:16px;padding:18px;display:flex;gap:12px;align-items:center}.trust-card span{font-size:1.5rem}.trust-card strong{display:block}.trust-card small{color:var(--muted)}
+    section{scroll-margin-top:90px}.section{max-width:1180px;margin:auto;padding:72px 22px}.section-head{text-align:center;margin-bottom:30px}.section-head h2{font-size:clamp(1.8rem,3vw,2.6rem);color:var(--green);margin:0 0 10px}.section-head p{color:var(--muted);margin:0}
+    .toolbar{display:flex;gap:12px;justify-content:space-between;align-items:center;margin-bottom:22px;flex-wrap:wrap}.search{flex:1;min-width:210px;max-width:430px;padding:12px 14px;border:1px solid var(--line);border-radius:12px}.category-filter{display:flex;gap:8px;flex-wrap:wrap}.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;color:var(--ink)}.chip.active{background:var(--green);color:#fff;border-color:var(--green)}
+    .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.product{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}.product:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.product-art{height:155px;background:linear-gradient(140deg,#f4f6e9,#e4eedc);display:grid;place-items:center;font-size:4.3rem;position:relative}.product-art small{position:absolute;top:12px;left:12px;background:#fff;border-radius:999px;padding:5px 9px;font-size:.72rem;color:var(--green);font-weight:800}.product-body{padding:16px;display:flex;flex-direction:column;flex:1}.product h3{margin:0 0 5px;font-size:1.05rem}.product .subtitle{color:var(--muted);font-size:.88rem;min-height:22px}.product-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;padding-top:16px}.price{font-size:1.08rem;font-weight:800;color:var(--green)}.add{border:0;border-radius:10px;background:#eaf2e6;color:var(--green);font-weight:800;padding:9px 12px}.add:hover{background:var(--green);color:#fff}
+    .about{background:var(--cream)}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}.about-panel{background:#fff;border-radius:22px;padding:28px;box-shadow:var(--shadow)}.about-panel h3{color:var(--green);font-size:1.4rem;margin-top:0}.about-panel p{line-height:1.8;color:var(--muted)}.benefits{display:grid;grid-template-columns:1fr 1fr;gap:12px}.benefit{padding:16px;border-radius:14px;background:#fff;border:1px solid var(--line)}.benefit b{display:block;margin-bottom:4px}.benefit span{color:var(--muted);font-size:.9rem}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}.contact-card{border:1px solid var(--line);border-radius:20px;padding:24px}.contact-card h3{color:var(--green);margin-top:0}.contact-card p{color:var(--muted);line-height:1.7}.form-grid{display:grid;gap:12px}.form-grid input,.form-grid textarea{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:10px}.form-grid textarea{min-height:90px;resize:vertical}
+    footer{background:#123d2a;color:#e7efe8;padding:30px 22px}.footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-inner p{margin:5px 0;color:#c1d4c7}
+    .overlay{position:fixed;inset:0;background:#10271c80;z-index:30;opacity:0;pointer-events:none;transition:opacity .2s}.overlay.open{opacity:1;pointer-events:auto}.drawer{position:fixed;right:0;top:0;height:100dvh;width:min(440px,100%);background:#fff;z-index:31;transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-15px 0 40px #10271c20}.drawer.open{transform:translateX(0)}.drawer-head{padding:20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.drawer-head h2{margin:0;color:var(--green)}.icon-button{border:0;background:#edf2ea;border-radius:9px;width:38px;height:38px;font-size:1.25rem}.cart-items{padding:14px 20px;overflow:auto;flex:1}.empty{text-align:center;color:var(--muted);padding:45px 10px}.cart-row{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}.cart-emoji{height:46px;width:46px;border-radius:12px;background:#f1f5e9;display:grid;place-items:center;font-size:1.7rem}.cart-row strong{display:block;font-size:.95rem}.cart-row small{color:var(--muted)}.qty{display:flex;align-items:center;gap:8px;margin-top:7px}.qty button{border:1px solid  solid var(--line);padding:18px 20px}.total-line{display:flex;justify-content:space-between;font-weight:800;font-size:1.1rem;margin-bottom:14px}.drawer-bottom .primary{width:100%}.checkout{padding:20px;overflow:auto;display:none}.checkout.show{display:block}.checkout h3{color:var(--green)}.back-link{border:0;background:none;color:var(--green);font-weight:700;padding:0;margin-bottom:12px}.notice{border-radius:10px;padding:12px 14px;margin:12px 0;font-size:.92rem;display:none}.notice.show{display:block}.notice.error{background:#fff0ef;color:#9d3028}.notice.success{background:#eaf5e8;color:#215b35}.fineprint{font-size:.78rem;color:var(--muted);line-height:1.5;margin-top:12px}
+    @media(max-width:900px){.navlinks{display:none}.hero-inner{grid-template-columns:1fr .8fr;gap:22px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.trust{grid-template-columns:1fr 1fr}.trust-card:last-child{display:none}}
+    @media(max-width:650px){.nav{padding:10px 14px;gap:8px}.brand{min-width:0}.brand strong{font-size:.9rem}.brand small{font-size:.75rem}.logo{height:40px;width:40px}.navright{gap:6px}select{max-width:112px;padding:8px 5px;font-size:.85rem}.cart-button{padding:10px 11px}.hero-inner{grid-template-columns:1fr;padding:48px 18px 50px}.hero-art{min-height:220px;margin:0 12px}.floating.one{left:-10px}.floating.two{right:-10px}.trust{padding:0 14px;grid-template-columns:1fr;margin-top:-15px}.trust-card{padding:13px}.trust-card:nth-child(2){display:none}.section{padding:54px 16px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product-art{height:125px;font-size:3.3rem}.product-body{padding:12px}.product h3{font-size:.95rem}.product .subtitle{font-size:.8rem}.product-bottom{align-items:flex-start;flex-direction:column}.add{width:100%}.about-grid,.contact-grid{grid-template-columns:1fr}.benefits{gap:8px}.benefit{padding:12px}.toolbar{align-items:stretch}.search{max-width:none}.category-filter{overflow:auto;flex-wrap:nowrap;padding-bottom:4px}.chip{white-space:nowrap}.section-head{text-align:left}.section-head p{line-height:1.6}}
+  </style>
 </head>
-
 <body>
-<div class="topbar" data-i18n="topbar">🌿 Natural Food &nbsp; | &nbsp; Healthy Life &nbsp; | &nbsp; A Better Tomorrow 🌿</div>
+  <div class="topbar" data-i18n="topbar">இயற்கையின் நன்மைகள் — உங்கள் அன்றாட பராமரிப்பிற்கு 🌿</div>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="#home" aria-label="UYIR MULAI home"><span class="logo">🌱</span><span><strong>UYIR MULAI</strong><small>உயிர் முளை · Natural Care</small></span></a>
+      <div class="navlinks"><a href="#home" data-i18n="home">முகப்பு</a><a href="#products" data-i18n="products">பொருட்கள்</a><a href="#about" data-i18n="about">எங்களைப் பற்றி</a><a href="#contact" data-i18n="contact">தொடர்பு</a></div>
+      <div class="navright">
+        <select id="language" aria-label="Choose language">
+          <option value="ta">தமிழ்</option><option value="en">English</option><option value="kn">ಕನ್ನಡ</option><option value="te">తెలుగు</option><option value="ml">മലയാളം</option><option value="hi">हिन्दी</option>
+        </select>
+        <button class="cart-button" id="openCart">🛒 <span data-i18n="cart">கூடை</span> <span id="cartCount">0</span></button>
+      </div>
+    </nav>
+  </header>
 
-<header class="header">
-  <a class="brand" href="#home" aria-label="UYIR MULAI Home">
-    <div class="brand-icon">🌱</div>
-    <div>
-      <h1>UYIR MULAI</h1>
-      <p>உயிர் முளை</p>
-      <p data-i18n="tagline">Sprouted to Life, Nourished by Nature</p>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow" data-i18n="eyebrow">இயற்கையுடன் இணைந்த பராமரிப்பு</div>
+          <h1 data-i18n="heroTitle">இயற்கையின் அன்பு,<br>உங்கள் ஒவ்வொரு நாளுக்கும்.</h1>
+          <p data-i18n="heroText">இயற்கை சார்ந்த பராமரிப்புப் பொருட்களை எளிமையாகத் தேர்ந்தெடுங்கள். உங்கள் அன்றாட வழக்கத்திற்கு ஏற்ற பொருட்களை ஒரே இடத்தில் கண்டறியுங்கள்.</p>
+          <div class="hero-actions"><a class="primary" href="#products" style="text-decoration:none" data-i18n="shopNow">பொருட்களைப் பாருங்கள்</a><a class="secondary" href="#about" style="text-decoration:none" data-i18n="learnMore">மேலும் அறிய</a></div>
+        </div>
+        <div class="hero-art" aria-hidden="true"><span class="big-leaf">🌿</span><div class="floating one" data-i18n="naturalCare">🌱 இயற்கை பராமரிப்பு</div><div class="floating two" data-i18n="rootedNature">🍃 இயற்கையிலிருந்து</div></div>
+      </div>
+    </section>
+
+    <div class="trust">
+      <div class="trust-card"><span>🌿</span><div><strong data-i18n="carefullyChosen">கவனமாகத் தேர்ந்தெடுத்தவை</strong><small data-i18n="qualityLine">தரத்திற்கு முக்கியத்துவம்</small></div></div>
+      <div class="trust-card"><span>📦</span><div><strong data-i18n="easyOrdering">எளிய ஆர்டர்</strong><small data-i18n="orderLine">சில படிகளில் ஆர்டர் செய்யுங்கள்</small></div></div>
+      <div class="trust-card"><span>💚</span><div><strong data-i18n="customerFirst">வாடிக்கையாளர் முதன்மை</strong><small data-i18n="supportLine">உங்களுக்கு உதவ நாங்கள் தயார்</small></div></div>
     </div>
-  </a>
-  <div class="header-tools">
-    <select class="language" id="languageSelect" aria-label="Select language">
-      <option value="ta">🇮🇳 தமிழ் (Tamil)</option>
-      <option value="en">🇬🇧 English</option>
-      <option value="kn">🇮🇳 ಕನ್ನಡ (Kannada)</option>
-      <option value="te">🇮🇳 తెలుగు (Telugu)</option>
-      <option value="ml">🇮🇳 മലയാളം (Malayalam)</option>
-      <option value="hi">🇮🇳 हिन्दी (Hindi)</option>
-    </select>
-    <button class="cart-button" id="cartToggle" type="button">🛒 <span data-i18n="cart">Cart</span> (<span id="cartCount">0</span>)</button>
-  </div>
-</header>
 
-<nav class="nav">
-  <a href="#home" data-i18n="home">Home</a>
-  <a href="#products" data-i18n="shop">Shop</a>
-  <a href="#benefits" data-i18n="benefits">Benefits</a>
-  <a href="#about" data-i18n="about">About Us</a>
-  <a href="#contact" data-i18n="contact">Contact</a>
-</nav>
+    <section class="section" id="products">
+      <div class="section-head"><h2 data-i18n="productsTitle">எங்கள் பொருட்கள்</h2><p data-i18n="productsIntro">உங்கள் தேவைக்கேற்ற இயற்கை சார்ந்த பராமரிப்புப் பொருட்களைத் தேர்ந்தெடுங்கள்.</p></div>
+      <div class="toolbar">
+        <input class="search" id="search" type="search" placeholder="பொருளைத் தேடுங்கள்..." data-i18n-placeholder="searchPlaceholder">
+        <div class="category-filter" id="filters"><button class="chip active" data-category="all" data-i18n="all">அனைத்தும்</button><button class="chip" data-category="powder" data-i18n="powders">பொடிகள்</button><button class="chip" data-category="oil" data-i18n="oils">எண்ணெய்கள்</button><button class="chip" data-category="care" data-i18n="careItems">பராமரிப்பு</button></div>
+      </div>
+      <div class="grid" id="productGrid" aria-live="polite"></div>
+      <p id="productStatus" style="color:var(--muted);text-align:center"></p>
+    </section>
 
-<main>
-<section class="hero" id="home">
-  <div class="hero-copy">
-    <div class="script" data-i18n="fresh">Freshly Sprouted 🌿</div>
-    <h2><span data-i18n="healthy">Healthy Food</span><br><span data-i18n="bright">for a Brighter Life</span></h2>
-    <p><strong data-i18n="pure">🌿 Pure • Natural • Nutritious</strong></p>
-    <p data-i18n="heroText">Enjoy the goodness of nature with our fresh sprouted seeds and grains.</p>
-    <a class="button" href="#products" data-i18n="shopNow">🛒 Shop Now →</a>
-  </div>
-  <div class="hero-image" role="img" aria-label="Fresh healthy salad">
-    <span data-i18n="heroBadge">Small Sprouts, Big Possibilities!</span>
-  </div>
-</section>
+    <section class="about" id="about"><div class="section">
+      <div class="about-grid">
+        <div><div class="eyebrow" data-i18n="ourValues">எங்கள் நோக்கம்</div><h2 style="font-size:clamp(2rem,4vw,3rem);color:var(--green)" data-i18n="aboutTitle">எளிமையான தேர்வு. இயற்கையுடன் நெருக்கம்.</h2><p style="line-height:1.9;color:var(--muted)" data-i18n="aboutText">UYIR MULAI-யில், உங்கள் அன்றாட பராமரிப்பிற்கான பொருட்களை எளிதாகக் கண்டறிந்து ஆர்டர் செய்ய உதவுவதே எங்கள் நோக்கம். பொருளின் விவரங்களைப் படித்து, உங்கள் தேவைக்கேற்றதைத் தேர்வு செய்யுங்கள்.</p></div>
+        <div class="about-panel"><h3 data-i18n="whyChoose">ஏன் UYIR MULAI?</h3><div class="benefits"><div class="benefit"><b>🌱 <span data-i18n="simple">எளிமை</span></b><span data-i18n="simpleText">எளிதான பொருள் தேர்வு</span></div><div class="benefit"><b>🧾 <span data-i18n="clearInfo">தெளிவான தகவல்</span></b><span data-i18n="clearInfoText">விலை மற்றும் அளவு தெளிவாக</span></div><div class="benefit"><b>🛒 <span data-i18n="easyCart">எளிய கூடை</span></b><span data-i18n="easyCartText">பொருட்களைச் சேர்த்து ஆர்டர் செய்யலாம்</span></div><div class="benefit"><b>💬 <span data-i18n="support">உதவி</span></b><span data-i18n="supportText">தொடர்பு கொள்ளும் வசதி</span></div></div></div>
+      </div>
+    </div></section>
 
-<section class="benefits" id="benefits">
-  <div class="benefit"><div class="benefit-icon">🍃</div><div><strong data-i18n="natural">Natural</strong><small data-i18n="naturalSub">Simple ingredients</small></div></div>
-  <div class="benefit"><div class="benefit-icon">♡</div><div><strong data-i18n="nutrition">Nutrition</strong><small data-i18n="nutritionSub">Part of a balanced diet</small></div></div>
-  <div class="benefit"><div class="benefit-icon">✓</div><div><strong data-i18n="fresh">Freshly Sprouted</strong><small data-i18n="freshSub">Check product details</small></div></div>
-  <div class="benefit"><div class="benefit-icon">🚚</div><div><strong data-i18n="delivery">Delivery</strong><small data-i18n="deliverySub">Ask about your area</small></div></div>
-  <div class="benefit"><div class="benefit-icon">🌱</div><div><strong data-i18n="nature">Nature</strong><small data-i18n="natureSub">Inspired by nature</small></div></div>
-</section>
+    <section class="section" id="contact"><div class="section-head"><h2 data-i18n="contactTitle">எங்களைத் தொடர்பு கொள்ளுங்கள்</h2><p data-i18n="contactIntro">கேள்விகள் அல்லது ஆர்டர் தொடர்பான உதவிக்கு எங்களை அணுகுங்கள்.</p></div>
+      <div class="contact-grid"><div class="contact-card"><h3 data-i18n="getInTouch">தொடர்பில் இருங்கள்</h3><p data-i18n="contactText">உங்கள் கடையின் உண்மையான தொலைபேசி எண் மற்றும் மின்னஞ்சலை இங்கே சேர்க்கவும். இப்போது கீழே உள்ள ஆர்டர் படிவம் மூலம் ஆர்டரை அனுப்பலாம்.</p><p><strong>UYIR MULAI | உயிர் முளை</strong></p><p data-i18n="contactHint">தயவுசெய்து வெளியிடுவதற்கு முன் உங்கள் சரியான தொடர்பு விவரங்களைச் சேர்க்கவும்.</p></div>
+        <div class="contact-card"><h3 data-i18n="quickMessage">விரைவு செய்தி</h3><form class="form-grid" id="contactForm"><input name="name" required maxlength="100" data-i18n-placeholder="yourName" placeholder="உங்கள் பெயர்"><input name="email" type="email" required maxlength="150" data-i18n-placeholder="yourEmail" placeholder="மின்னஞ்சல்"><textarea name="message" required maxlength="1000" data-i18n-placeholder="yourMessage" placeholder="உங்கள் செய்தி"></textarea><button class="primary" type="submit" data-i18n="prepareEmail">மின்னஞ்சலைத் தயாரிக்கவும்</button><p class="fineprint" data-i18n="contactFormNote">இந்தப் படிவம் உங்கள் மின்னஞ்சல் செயலியைத் திறக்கிறது; தானாகச் செய்தி அனுப்பாது.</p></form></div>
+      </div>
+    </section>
+  </main>
 
-<section class="section" id="products">
-  <div class="section-heading">
-    <div>
-      <h2 data-i18n="ourProducts">Our Sprouted Products</h2>
-      <p data-i18n="productSubtitle">Explore our sprouted food selection.</p>
+  <footer><div class="footer-inner"><div><strong>UYIR MULAI | உயிர் முளை 🌱</strong><p data-i18n="footerLine">இயற்கை சார்ந்த அன்றாட பராமரிப்பு.</p></div><p>© <span id="year"></span> UYIR MULAI. <span data-i18n="rights">அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</span></p></div></footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Shopping cart" aria-modal="true" role="dialog">
+    <div class="drawer-head"><h2 id="drawerTitle" data-i18n="yourCart">உங்கள் கூடை</h2><button class="icon-button" id="closeCart" aria-label="Close cart">×</button></div>
+    <div class="cart-items" id="cartView"></div>
+    <div class="checkout" id="checkoutView">
+      <button class="back-link" id="backToCart" data-i18n="backCart">← கூடைக்குத் திரும்பு</button>
+      <h3 data-i18n="deliveryDetails">டெலிவரி விவரங்கள்</h3>
+      <form class="form-grid" id="orderForm">
+        <input name="customerName" required minlength="2" maxlength="100" data-i18n-placeholder="fullName" placeholder="முழுப் பெயர்">
+        <input name="phone" required type="tel" maxlength="20" data-i18n-placeholder="phone" placeholder="தொலைபேசி எண்">
+        <textarea name="address" required minlength="5" maxlength="500" data-i18n-placeholder="address" placeholder="முழு டெலிவரி முகவரி"></textarea>
+        <div class="notice" id="orderNotice" role="status"></div>
+        <button class="primary" type="submit" id="placeOrder" data-i18n="placeOrder">ஆர்டரை உறுதிசெய்</button>
+        <p class="fineprint" data-i18n="privacyNote">உங்கள் பெயர், தொலைபேசி எண் மற்றும் முகவரி ஆர்டரைச் செயலாக்குவதற்காகப் பயன்படுத்தப்படும். வங்கி அட்டை விவரங்களை இந்தப் படிவத்தில் உள்ளிட வேண்டாம்.</p>
+      </form>
     </div>
-    <button class="small-button" type="button" onclick="document.getElementById('productsGrid').scrollIntoView({behavior:'smooth'})" data-i18n="viewProducts">View Products ↓</button>
-  </div>
-
-  <div class="products" id="productsGrid">
-    <article class="card">
-      <div class="product-image" aria-label="Green gram sprouts">🌿</div>
-      <span class="tag" data-i18n="sample">Sample item</span>
-      <h3 data-i18n="greenGram">Sprouted Green Gram</h3>
-      <p data-i18n="greenGramTa">முளைகட்டிய பச்சைப்பயறு</p>
-      <p>500 g</p>
-      <div class="price">₹45</div>
-      <button class="add-button" onclick="addToCart('greenGram',45)" data-i18n="addCart">🛒 Add to Cart</button>
-    </article>
-
-    <article class="card">
-      <div class="product-image" aria-label="Chickpea sprouts">🫘</div>
-      <span class="tag" data-i18n="sample">Sample item</span>
-      <h3 data-i18n="chickpeas">Sprouted Chickpeas</h3>
-      <p data-i18n="chickpeasTa">முளைகட்டிய கொண்டைக்கடலை</p>
-      <p>500 g</p>
-      <div class="price">₹60</div>
-      <button class="add-button" onclick="addToCart('chickpeas',60)" data-i18n="addCart">🛒 Add to Cart</button>
-    </article>
-
-    <article class="card">
-      <div class="product-image" aria-label="Mixed sprouts">🥗</div>
-      <span class="tag" data-i18n="sample">Sample item</span>
-      <h3 data-i18n="mixed">Mixed Sprouts</h3>
-      <p data-i18n="mixedTa">முளைகட்டிய தானியக் கலவை</p>
-      <p>500 g</p>
-      <div class="price">₹55</div>
-      <button class="add-button" onclick="addToCart('mixed',55)" data-i18n="addCart">🛒 Add to Cart</button>
-    </article>
-
-    <article class="card">
-      <div class="product-image" aria-label="Sprout powder">🌾</div>
-      <span class="tag" data-i18n="sample">Sample item</span>
-      <h3 data-i18n="powder">Sprout Powder</h3>
-      <p data-i18n="powderTa">முளைத் தானியப் பொடி</p>
-      <p>200 g</p>
-      <div class="price">₹120</div>
-      <button class="add-button" onclick="addToCart('powder',120)" data-i18n="addCart">🛒 Add to Cart</button>
-    </article>
-  </div>
-
-  <div class="cart-panel" id="cartPanel">
-    <h3 data-i18n="yourCart">Your Cart</h3>
-    <div id="cartItems"></div>
-    <p><strong><span data-i18n="total">Total</span>: ₹<span id="cartTotal">0</span></strong></p>
-    <p class="notice" style="color:#526557" data-i18n="cartNotice">Demo cart only. Orders are not submitted or saved.</p>
-    <button class="small-button" id="clearCart" type="button" data-i18n="clearCart">Clear Cart</button>
-  </div>
-</section>
-
-<section class="promo" id="about">
-  <h2 data-i18n="aboutTitle">From Nature to Your Plate 🌱</h2>
-  <p data-i18n="aboutText">UYIR MULAI celebrates sprouted foods and the goodness of nature.</p>
-  <a class="button" href="#contact" data-i18n="contactUs">Contact Us →</a>
-</section>
-</main>
-
-<footer class="footer" id="contact">
-  <h2>🌱 UYIR MULAI | உயிர் முளை</h2>
-  <p data-i18n="tagline">Sprouted to Life, Nourished by Nature</p>
-  <div class="footer-links">
-    <a href="#home" data-i18n="home">Home</a>
-    <a href="#products" data-i18n="shop">Shop</a>
-    <a href="#benefits" data-i18n="benefits">Benefits</a>
-    <a href="#about" data-i18n="about">About Us</a>
-  </div>
-  <p data-i18n="contactSoon">Contact details coming soon.</p>
-  <p class="notice">© <span id="year"></span> UYIR MULAI. <span data-i18n="rights">All rights reserved.</span></p>
-</footer>
+    <div class="drawer-bottom" id="cartBottom"><div class="total-line"><span data-i18n="subtotal">மொத்தம்</span><span id="cartTotal">₹0</span></div><button class="primary" id="checkoutButton" data-i18n="continueCheckout">ஆர்டர் செய்யத் தொடரவும்</button><p class="fineprint" data-i18n="shippingNote">டெலிவரி கட்டணம் இருந்தால் பின்னர் உறுதிப்படுத்தப்படும்.</p></div>
+  </aside>
 
 <script>
-const translations = {
-  en: {
-    topbar:"🌿 Natural Food | Healthy Life | A Better Tomorrow 🌿",
-    tagline:"Sprouted to Life, Nourished by Nature",cart:"Cart",home:"Home",shop:"Shop",
-    benefits:"Benefits",about:"About Us",contact:"Contact",fresh:"Freshly Sprouted 🌿",
-    healthy:"Healthy Food",bright:"for a Brighter Life",pure:"🌿 Pure • Natural • Nutritious",
-    heroText:"Enjoy the goodness of nature with our fresh sprouted seeds and grains.",
-    shopNow:"🛒 Shop Now →",heroBadge:"Small Sprouts, Big Possibilities!",
-    natural:"Natural",naturalSub:"Simple ingredients",nutrition:"Nutrition",
-    nutritionSub:"Part of a balanced diet",freshSub:"Check product details",
-    delivery:"Delivery",deliverySub:"Ask about your area",nature:"Nature",
-    natureSub:"Inspired by nature",ourProducts:"Our Sprouted Products",
-    productSubtitle:"Explore our sprouted food selection.",viewProducts:"View Products ↓",
-    sample:"Sample item",greenGram:"Sprouted Green Gram",greenGramTa:"Green gram sprouts",
-    chickpeas:"Sprouted Chickpeas",chickpeasTa:"Chickpea sprouts",
-    mixed:"Mixed Sprouts",mixedTa:"Mixed grain sprouts",powder:"Sprout Powder",
-    powderTa:"Sprouted grain powder",addCart:"🛒 Add to Cart",yourCart:"Your Cart",
-    total:"Total",cartNotice:"Demo cart only. Orders are not submitted or saved.",
-    clearCart:"Clear Cart",aboutTitle:"From Nature to Your Plate 🌱",
-    aboutText:"UYIR MULAI celebrates sprouted foods and the goodness of nature.",
-    contactUs:"Contact Us →",contactSoon:"Contact details coming soon.",
-    rights:"All rights reserved.",added:"Added to cart",empty:"Your cart is empty.",
-    removed:"Remove"
-  },
-  ta: {
-    topbar:"🌿 இயற்கை உணவு | ஆரோக்கிய வாழ்வு | சிறந்த நாளை 🌿",
-    tagline:"இயற்கையின் நன்மை, முளை உணவின் வளம்",cart:"கூடை",home:"முகப்பு",
-    shop:"பொருட்கள்",benefits:"நன்மைகள்",about:"எங்களைப் பற்றி",contact:"தொடர்பு",
-    fresh:"புதிதாக முளைகட்டியது 🌿",healthy:"ஆரோக்கியமான உணவு",
-    bright:"வளமான வாழ்க்கைக்கு",pure:"🌿 தூய்மை • இயற்கை • ஊட்டச்சத்து",
-    heroText:"புதிய முளைகட்டிய பயறு மற்றும் தானியங்களின் இயற்கைச் சிறப்பை அறியுங்கள்.",
-    shopNow:"🛒 வாங்குங்கள் →",heroBadge:"சிறிய முளைகள், பெரிய வாய்ப்புகள்!",
-    natural:"இயற்கையானது",naturalSub:"எளிய மூலப்பொருட்கள்",nutrition:"ஊட்டச்சத்து",
-    nutritionSub:"சமச்சீர் உணவின் ஒரு பகுதி",freshSub:"பொருள் விவரங்களைப் பாருங்கள்",
-    delivery:"விநியோகம்",deliverySub:"உங்கள் பகுதியில் விசாரிக்கவும்",nature:"இயற்கை",
-    natureSub:"இயற்கையால் ஈர்க்கப்பட்டது",ourProducts:"எங்கள் முளை உணவுகள்",
-    productSubtitle:"எங்கள் முளை உணவுகளைப் பாருங்கள்.",viewProducts:"பொருட்களைப் பார்க்க ↓",
-    sample:"மாதிரி பொருள்",greenGram:"முளைகட்டிய பச்சைப்பயறு",
-    greenGramTa:"புதிய பச்சைப்பயறு முளைகள்",chickpeas:"முளைகட்டிய கொண்டைக்கடலை",
-    chickpeasTa:"கொண்டைக்கடலை முளைகள்",mixed:"முளைகட்டிய தானியக் கலவை",
-    mixedTa:"கலவை தானிய முளைகள்",powder:"முளைத் தானியப் பொடி",
-    powderTa:"முளைகட்டிய தானியப் பொடி",addCart:"🛒 கூடையில் சேர்",
-    yourCart:"உங்கள் கூடை",total:"மொத்தம்",
-    cartNotice:"இது மாதிரி கூடை மட்டுமே. ஆர்டர் அனுப்பப்படவோ சேமிக்கப்படவோ இல்லை.",
-    clearCart:"கூடையை காலி செய்",aboutTitle:"இயற்கையிலிருந்து உங்கள் தட்டிற்கு 🌱",
-    aboutText:"முளை உணவுகளின் சிறப்பையும் இயற்கையின் நன்மையையும் உயிர் முளை கொண்டாடுகிறது.",
-    contactUs:"தொடர்பு கொள்ள →",contactSoon:"தொடர்பு விவரங்கள் விரைவில்.",
-    rights:"அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",added:"கூடையில் சேர்க்கப்பட்டது",
-    empty:"உங்கள் கூடை காலியாக உள்ளது.",removed:"நீக்கு"
-  },
-  kn: {
-    topbar:"🌿 ನೈಸರ್ಗಿಕ ಆಹಾರ | ಆರೋಗ್ಯಕರ ಜೀವನ | ಉತ್ತಮ ನಾಳೆ 🌿",
-    tagline:"ಪ್ರಕೃತಿಯ ಪೋಷಣೆ, ಮೊಳಕೆಯ ಶಕ್ತಿ",cart:"ಕಾರ್ಟ್",home:"ಮುಖಪುಟ",
-    shop:"ಉತ್ಪನ್ನಗಳು",benefits:"ಪ್ರಯೋಜನಗಳು",about:"ನಮ್ಮ ಬಗ್ಗೆ",contact:"ಸಂಪರ್ಕ",
-    fresh:"ತಾಜಾ ಮೊಳಕೆಗಳು 🌿",healthy:"ಆರೋಗ್ಯಕರ ಆಹಾರ",bright:"ಉಜ್ವಲ ಜೀವನಕ್ಕಾಗಿ",
-    pure:"🌿 ಶುದ್ಧ • ನೈಸರ್ಗಿಕ • ಪೌಷ್ಟಿಕ",heroText:"ತಾಜಾ ಮೊಳಕೆಯಿಟ್ಟ ಕಾಳುಗಳ ನೈಸರ್ಗಿಕ ಸವಿಯನ್ನು ಅನ್ವೇಷಿಸಿ.",
-    shopNow:"🛒 ಖರೀದಿಸಿ →",heroBadge:"ಸಣ್ಣ ಮೊಳಕೆಗಳು, ದೊಡ್ಡ ಸಾಧ್ಯತೆಗಳು!",
-    natural:"ನೈಸರ್ಗಿಕ",naturalSub:"ಸರಳ ಪದಾರ್ಥಗಳು",nutrition:"ಪೋಷಕಾಂಶ",
-    nutritionSub:"ಸಮತೋಲಿತ ಆಹಾರದ ಭಾಗ",freshSub:"ಉತ್ಪನ್ನದ ವಿವರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ",
-    delivery:"ವಿತರಣೆ",deliverySub:"ನಿಮ್ಮ ಪ್ರದೇಶದ ಬಗ್ಗೆ ಕೇಳಿ",nature:"ಪ್ರಕೃತಿ",
-    natureSub:"ಪ್ರಕೃತಿಯಿಂದ ಪ್ರೇರಿತ",ourProducts:"ನಮ್ಮ ಮೊಳಕೆ ಉತ್ಪನ್ನಗಳು",
-    productSubtitle:"ನಮ್ಮ ಮೊಳಕೆ ಆಹಾರಗಳನ್ನು ನೋಡಿ.",viewProducts:"ಉತ್ಪನ್ನಗಳನ್ನು ನೋಡಿ ↓",
-    sample:"ಮಾದರಿ ಉತ್ಪನ್ನ",greenGram:"ಮೊಳಕೆಯಿಟ್ಟ ಹೆಸರುಕಾಳು",
-    greenGramTa:"ಹೆಸರುಕಾಳು ಮೊಳಕೆಗಳು",chickpeas:"ಮೊಳಕೆಯಿಟ್ಟ ಕಡಲೆ",
-    chickpeasTa:"ಕಡಲೆ ಮೊಳಕೆಗಳು",mixed:"ಮಿಶ್ರ ಮೊಳಕೆಗಳು",
-    mixedTa:"ಮಿಶ್ರ ಧಾನ್ಯ ಮೊಳಕೆಗಳು",powder:"ಮೊಳಕೆ ಪುಡಿ",
-    powderTa:"ಮೊಳಕೆಯಿಟ್ಟ ಧಾನ್ಯ ಪುಡಿ",addCart:"🛒 ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಿ",
-    yourCart:"ನಿಮ್ಮ ಕಾರ್ಟ್",total:"ಒಟ್ಟು",
-    cartNotice:"ಇದು ಮಾದರಿ ಕಾರ್ಟ್ ಮಾತ್ರ. ಆರ್ಡರ್ ಕಳುಹಿಸಲಾಗುವುದಿಲ್ಲ ಅಥವಾ ಉಳಿಸಲಾಗುವುದಿಲ್ಲ.",
-    clearCart:"ಕಾರ್ಟ್ ಖಾಲಿ ಮಾಡಿ",aboutTitle:"ಪ್ರಕೃತಿಯಿಂದ ನಿಮ್ಮ ತಟ್ಟೆಗೆ 🌱",
-    aboutText:"UYIR MULAI ಮೊಳಕೆ ಆಹಾರ ಮತ್ತು ಪ್ರಕೃತಿಯ ಒಳಿತನ್ನು ಆಚರಿಸುತ್ತದೆ.",
-    contactUs:"ಸಂಪರ್ಕಿಸಿ →",contactSoon:"ಸಂಪರ್ಕ ವಿವರಗಳು ಶೀಘ್ರದಲ್ಲೇ.",
-    rights:"ಎಲ್ಲ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.",added:"ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಲಾಗಿದೆ",
-    empty:"ನಿಮ್ಮ ಕಾರ್ಟ್ ಖಾಲಿಯಾಗಿದೆ.",removed:"ತೆಗೆದುಹಾಕಿ"
-  },
-  te: {
-    topbar:"🌿 సహజ ఆహారం | ఆరోగ్యకరమైన జీవితం | మంచి రేపు 🌿",
-    tagline:"ప్రకృతి పోషణ, మొలకల శక్తి",cart:"కార్ట్",home:"హోమ్",
-    shop:"ఉత్పత్తులు",benefits:"ప్రయోజనాలు",about:"మా గురించి",contact:"సంప్రదించండి",
-    fresh:"తాజా మొలకలు 🌿",healthy:"ఆరోగ్యకరమైన ఆహారం",bright:"మెరుగైన జీవితం కోసం",
-    pure:"🌿 స్వచ్ఛమైన • సహజమైన • పోషకమైన",heroText:"తాజా మొలకెత్తిన గింజల సహజ మంచితనాన్ని ఆస్వాదించండి.",
-    shopNow:"🛒 కొనండి →",heroBadge:"చిన్న మొలకలు, పెద్ద అవకాశాలు!",
-    natural:"సహజమైనది",naturalSub:"సాధారణ పదార్థాలు",nutrition:"పోషకాలు",
-    nutritionSub:"సమతుల్య ఆహారంలో భాగం",freshSub:"ఉత్పత్తి వివరాలు చూడండి",
-    delivery:"డెలివరీ",deliverySub:"మీ ప్రాంతం గురించి అడగండి",nature:"ప్రకృతి",
-    natureSub:"ప్రకృతి స్ఫూర్తితో",ourProducts:"మా మొలక ఉత్పత్తులు",
-    productSubtitle:"మా మొలక ఆహారాలను చూడండి.",viewProducts:"ఉత్పత్తులు చూడండి ↓",
-    sample:"నమూనా ఉత్పత్తి",greenGram:"మొలకెత్తిన పెసలు",
-    greenGramTa:"పెసల మొలకలు",chickpeas:"మొలకెత్తిన శనగలు",
-    chickpeasTa:"శనగ మొలకలు",mixed:"మిశ్రమ మొలకలు",
-    mixedTa:"మిశ్రమ ధాన్యాల మొలకలు",powder:"మొలకల పొడి",
-    powderTa:"మొలకెత్తిన ధాన్యపు పొడి",addCart:"🛒 కార్ట్‌లో చేర్చండి",
-    yourCart:"మీ కార్ట్",total:"మొత్తం",
-    cartNotice:"ఇది నమూనా కార్ట్ మాత్రమే. ఆర్డర్ పంపబడదు లేదా సేవ్ చేయబడదు.",
-    clearCart:"కార్ట్ ఖాళీ చేయండి",aboutTitle:"ప్రకృతి నుంచి మీ ప్లేట్‌కు 🌱",
-    aboutText:"UYIR MULAI మొలక ఆహారాలు, ప్రకృతి మంచితనాన్ని ప్రోత్సహిస్తుంది.",
-    contactUs:"సంప్రదించండి →",contactSoon:"సంప్రదింపు వివరాలు త్వరలో.",
-    rights:"అన్ని హక్కులు ప్రత్యేకించబడ్డాయి.",added:"కార్ట్‌లో చేర్చబడింది",
-    empty:"మీ కార్ట్ ఖాళీగా ఉంది.",removed:"తొలగించండి"
-  },
-  ml: {
-    topbar:"🌿 പ്രകൃതിദത്ത ഭക്ഷണം | ആരോഗ്യകരമായ ജീവിതം | നല്ല നാളെ 🌿",
-    tagline:"പ്രകൃതിയുടെ പോഷണം, മുളകളുടെ കരുത്ത്",cart:"കാർട്ട്",home:"ഹോം",
-    shop:"ഉൽപ്പന്നങ്ങൾ",benefits:"ഗുണങ്ങൾ",about:"ഞങ്ങളെക്കുറിച്ച്",contact:"ബന്ധപ്പെടുക",
-    fresh:"പുതിയ മുളകൾ 🌿",healthy:"ആരോഗ്യകരമായ ഭക്ഷണം",bright:"മികച്ച ജീവിതത്തിനായി",
-    pure:"🌿 ശുദ്ധം • പ്രകൃതിദത്തം • പോഷകസമൃദ്ധം",
-    heroText:"പുതുതായി മുളപ്പിച്ച ധാന്യങ്ങളുടെ പ്രകൃതിദത്ത ഗുണങ്ങൾ അറിയൂ.",
-    shopNow:"🛒 വാങ്ങൂ →",heroBadge:"ചെറിയ മുളകൾ, വലിയ സാധ്യതകൾ!",
-    natural:"പ്രകൃതിദത്തം",naturalSub:"ലളിതമായ ചേരുവകൾ",nutrition:"പോഷണം",
-    nutritionSub:"സമീകൃത ഭക്ഷണത്തിന്റെ ഭാഗം",freshSub:"ഉൽപ്പന്ന വിവരങ്ങൾ പരിശോധിക്കുക",
-    delivery:"വിതരണം",deliverySub:"നിങ്ങളുടെ പ്രദേശത്തെക്കുറിച്ച് ചോദിക്കൂ",nature:"പ്രകൃതി",
-    natureSub:"പ്രകൃതിയിൽ നിന്ന് പ്രചോദനം",ourProducts:"ഞങ്ങളുടെ മുളപ്പിച്ച ഉൽപ്പന്നങ്ങൾ",
-    productSubtitle:"ഞങ്ങളുടെ മുളപ്പിച്ച ഭക്ഷണങ്ങൾ കാണൂ.",viewProducts:"ഉൽപ്പന്നങ്ങൾ കാണൂ ↓",
-    sample:"മാതൃകാ ഉൽപ്പന്നം",greenGram:"മുളപ്പിച്ച ചെറുപയർ",
-    greenGramTa:"ചെറുപയർ മുളകൾ",chickpeas:"മുളപ്പിച്ച കടല",
-    chickpeasTa:"കടല മുളകൾ",mixed:"മിശ്രിത മുളകൾ",
-    mixedTa:"മിശ്രിത ധാന്യ മുളകൾ",powder:"മുളപ്പിച്ച ധാന്യപ്പൊടി",
-    powderTa:"മുളപ്പിച്ച ധാന്യപ്പൊടി",addCart:"🛒 കാർട്ടിൽ ചേർക്കുക",
-    yourCart:"നിങ്ങളുടെ കാർട്ട്",total:"ആകെ",
-    cartNotice:"ഇത് മാതൃകാ കാർട്ട് മാത്രമാണ്. ഓർഡർ അയയ്ക്കുകയോ സൂക്ഷിക്കുകയോ ഇല്ല.",
-    clearCart:"കാർട്ട് ശൂന്യമാക്കുക",aboutTitle:"പ്രകൃതിയിൽ നിന്ന് നിങ്ങളുടെ പാത്രത്തിലേക്ക് 🌱",
-    aboutText:"മുളപ്പിച്ച ഭക്ഷണങ്ങളുടെയും പ്രകൃതിയുടെയും നന്മയെ UYIR MULAI ആഘോഷിക്കുന്നു.",
-    contactUs:"ബന്ധപ്പെടുക →",contactSoon:"ബന്ധപ്പെടാനുള്ള വിവരങ്ങൾ ഉടൻ.",
-    rights:"എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം.",added:"കാർട്ടിൽ ചേർത്തു",
-    empty:"നിങ്ങളുടെ കാർട്ട് ശൂന്യമാണ്.",removed:"നീക്കം ചെയ്യുക"
-  },
-  hi: {
-    topbar:"🌿 प्राकृतिक भोजन | स्वस्थ जीवन | बेहतर कल 🌿",
-    tagline:"प्रकृति का पोषण, अंकुरों की शक्ति",cart:"कार्ट",home:"होम",
-    shop:"उत्पाद",benefits:"फायदे",about:"हमारे बारे में",contact:"संपर्क",
-    fresh:"ताज़े अंकुर 🌿",healthy:"स्वस्थ भोजन",bright:"बेहतर जीवन के लिए",
-    pure:"🌿 शुद्ध • प्राकृतिक • पौष्टिक",
-    heroText:"ताज़े अंकुरित बीजों और अनाज की प्राकृतिक अच्छाई का आनंद लें।",
-    shopNow:"🛒 अभी खरीदें →",heroBadge:"छोटे अंकुर, बड़ी संभावनाएँ!",
-    natural:"प्राकृतिक",naturalSub:"सरल सामग्री",nutrition
+  // After deploying your backend, replace this URL with its real address.
+  // For local testing, use: http://localhost:3000
+  const API_BASE = "https://YOUR-BACKEND-ADDRESS";
+
+  const translations = {
+    ta: {
+      topbar:"இயற்கையின் நன்மைகள் — உங்கள் அன்றாட பராமரிப்பிற்கு 🌿",home:"முகப்பு",products:"பொருட்கள்",about:"எங்களைப் பற்றி",contact:"தொடர்பு",cart:"கூடை",eyebrow:"இயற்கையுடன் இணைந்த பராமரிப்பு",heroTitle:"இயற்கையின் அன்பு,<br>உங்கள் ஒவ்வொரு நாளுக்கும்.",heroText:"இயற்கை சார்ந்த பராமரிப்புப் பொருட்களை எளிமையாகத் தேர்ந்தெடுங்கள். உங்கள் அன்றாட வழக்கத்திற்கு ஏற்ற பொருட்களை ஒரே இடத்தில் கண்டறியுங்கள்.",shopNow:"பொருட்களைப் பாருங்கள்",learnMore:"மேலும் அறிய",naturalCare:"🌱 இயற்கை பராமரிப்பு",rootedNature:"🍃 இயற்கையிலிருந்து",carefullyChosen:"கவனமாகத் தேர்ந்தெடுத்தவை",qualityLine:"தரத்திற்கு முக்கியத்துவம்",easyOrdering:"எளிய ஆர்டர்",orderLine:"சில படிகளில் ஆர்டர் செய்யுங்கள்",customerFirst:"வாடிக்கையாளர் முதன்மை",supportLine:"உங்களுக்கு உதவ நாங்கள் தயார்",productsTitle:"எங்கள் பொருட்கள்",productsIntro:"உங்கள் தேவைக்கேற்ற இயற்கை சார்ந்த பராமரிப்புப் பொருட்களைத் தேர்ந்தெடுங்கள்.",searchPlaceholder:"பொருளைத் தேடுங்கள்...",all:"அனைத்தும்",powders:"பொடிகள்",oils:"எண்ணெய்கள்",careItems:"பராமரிப்பு",ourValues:"எங்கள் நோக்கம்",aboutTitle:"எளிமையான தேர்வு. இயற்கையுடன் நெருக்கம்.",aboutText:"UYIR MULAI-யில், உங்கள் அன்றாட பராமரிப்பிற்கான பொருட்களை எளிதாகக் கண்டறிந்து ஆர்டர் செய்ய உதவுவதே எங்கள் நோக்கம். பொருளின் விவரங்களைப் படித்து, உங்கள் தேவைக்கேற்றதைத் தேர்வு செய்யுங்கள்.",whyChoose:"ஏன் UYIR MULAI?",s
